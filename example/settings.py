@@ -64,9 +64,20 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'example.pipelines.ExamplePipeline': 300,
-#}
+ITEM_PIPELINES = {
+   # 'example.pipelines.ExamplePipeline': 300,
+    'example.pipelines.PriceConverterPipeline': 300,
+    'example.pipelines.MysqlDBPipeline': 400,
+}
+
+# MySQL配置
+MYSQL_DB_NAME = 'scrapy_data'
+MYSQL_HOST = '127.0.0.1'
+MYSQL_PORT = 3306
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = 'canon'
+
+FEED_EXPORTERS = {'excel':'example.my_exporters.ExcelItemExporter'}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
